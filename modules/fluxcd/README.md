@@ -6,6 +6,8 @@
 | github | >= 2.8.0 |
 | helm | >= 1.2.1 |
 | kubernetes | >= 1.11.3 |
+| null | >= 2.1.2 |
+| tls | >= 2.1.1 |
 
 ## Providers
 
@@ -14,8 +16,8 @@
 | github | >= 2.8.0 |
 | helm | >= 1.2.1 |
 | kubernetes | >= 1.11.3 |
-| null | n/a |
-| tls | n/a |
+| null | >= 2.1.2 |
+| tls | >= 2.1.1 |
 
 ## Inputs
 
