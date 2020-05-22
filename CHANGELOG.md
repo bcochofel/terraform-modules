@@ -10,10 +10,17 @@ project adheres to [Semantic Versioning](http://semver.org/).
 
 
 
+<a name="v0.2.0"></a>
+## [v0.2.0] - 2020-05-22
+DOCS:
+- fluxcd module
+
+
 <a name="v0.1.0"></a>
 ## v0.1.0 - 2020-05-22
 FEATURES:
 - initial commit
 
 
-[Unreleased]: https://github.com/terraform-aws-modules/terraform-aws-eks/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/terraform-aws-modules/terraform-aws-eks/compare/v0.2.0...HEAD
+[v0.2.0]: https://github.com/terraform-aws-modules/terraform-aws-eks/compare/v0.1.0...v0.2.0
