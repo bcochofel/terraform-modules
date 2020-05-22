@@ -38,4 +38,4 @@
 
 | Name | Description |
 |------|-------------|
-| git-ssh-public-key | Generated SSH public key. |
+| git\_ssh\_pubkey | Generated SSH public key. |
