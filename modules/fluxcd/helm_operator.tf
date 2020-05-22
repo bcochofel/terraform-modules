@@ -2,28 +2,34 @@
 resource "null_resource" "helm_operator_crd" {
   count = var.bootstrap_helm_operator ? 1 : 0
 
+  triggers = {
+    crd_url = var.helm_operator_crd_url
+  }
+
   provisioner "local-exec" {
     command = <<EOT
       kubectl apply -f ${var.helm_operator_crd_url}
     EOT
   }
-}
 
-# delete helm operator crd
-resource "null_resource" "helm_operator_crd_destroy" {
+  # delete helm operator crd
   provisioner "local-exec" {
     when       = destroy
     on_failure = continue
 
     command = <<EOT
-      kubectl delete -f ${var.helm_operator_crd_url}
+      kubectl delete -f ${self.triggers.crd_url}
     EOT
   }
 }
 
 # bootstrap helm operator
 resource "helm_release" "helm_operator" {
-  depends_on = [null_resource.helm_operator_crd]
+  count = var.bootstrap_helm_operator ? 1 : 0
+
+  depends_on = [
+    null_resource.helm_operator_crd[0]
+  ]
 
   name       = var.helm_operator_spec_chart.release_name
   repository = var.helm_operator_spec_chart.repository
