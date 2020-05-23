@@ -11,7 +11,11 @@ project adheres to [Semantic Versioning](http://semver.org/).
 
 
 <a name="v0.2.0"></a>
-## [v0.2.0] - 2020-05-22
+## [v0.2.0] - 2020-05-23
+FEATURES:
+- fluxcd module, flux chart
+- fluxcd module, bootstrap helm operator and example
+
 DOCS:
 - fluxcd module
 
