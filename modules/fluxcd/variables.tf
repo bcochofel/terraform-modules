@@ -73,3 +73,15 @@ variable "helm_whatup_plugin_url" {
   type        = string
   default     = "https://github.com/bacongobbler/helm-whatup"
 }
+
+variable "install_fluxctl" {
+  description = "Whether to install fluxctl binary."
+  type        = bool
+  default     = true
+}
+
+variable "fluxctl_version" {
+  description = "Fluxctl binary version."
+  type        = string
+  default     = "1.19.0"
+}
