@@ -174,3 +174,23 @@ variable "flux_manifestGeneration" {
   type        = bool
   default     = false
 }
+
+variable "slack_api_url" {
+  description = "Slack API URL."
+  type        = string
+  default     = ""
+}
+
+variable "fluxcloud_slack_values" {
+  description = "Fluxcloud Slack values."
+  type = object({
+    username = string
+    channel  = string
+    emoji    = string
+  })
+  default = {
+    username = "fluxcloud"
+    channel  = "#kubernetes"
+    emoji    = ":hand:"
+  }
+}

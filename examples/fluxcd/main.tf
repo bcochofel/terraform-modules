@@ -23,7 +23,8 @@ provider "helm" {
 ### locals ###
 
 locals {
-  namespace = "fluxcd"
+  namespace     = "fluxcd"
+  slack_api_url = var.slack_api_url
 }
 
 ### modules ###
@@ -56,7 +57,7 @@ module "fluxcd" {
 
   # flux and fluxcloud
   bootstrap_flux      = true
-  bootstrap_fluxcloud = false
+  bootstrap_fluxcloud = true
   flux_git_values = {
     git_url          = "git@github.com:bcochofel/k8s-gitops-manifests.git"
     git_readonly     = false
@@ -67,4 +68,5 @@ module "fluxcd" {
     git_pollInterval = "1m"
     git_timeout      = "20s"
   }
+  slack_api_url = local.slack_api_url
 }

@@ -13,3 +13,8 @@ variable "kubectl_context" {
   description = "Kube context to choose from the config file."
   type        = string
 }
+
+variable "slack_api_url" {
+  description = "Slack API URL."
+  type        = string
+}
