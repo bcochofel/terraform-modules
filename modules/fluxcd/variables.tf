@@ -1,19 +1,3 @@
-variable "github_token" {
-  description = "GitHub personal access token"
-  type        = string
-}
-
-variable "kubectl_config_path" {
-  description = "Path to the kube config file."
-  type        = string
-  default     = "~/.kube/config"
-}
-
-variable "kubectl_context" {
-  description = "Kube context to choose from the config file."
-  type        = string
-}
-
 variable "manage_github_ssh_pubkey" {
   description = "Whether to let the module manage Github SSH public key."
   type        = bool
@@ -64,4 +48,28 @@ variable "helm_operator_helm_versions" {
   description = "Helm Operator helm.versions parameter."
   type        = string
   default     = "v3"
+}
+
+variable "install_helm" {
+  description = "Whether to install Helm binary."
+  type        = bool
+  default     = true
+}
+
+variable "helm_version" {
+  description = "Helm binary version (>= v3.x)."
+  type        = string
+  default     = "3.1.2"
+}
+
+variable "install_helm_whatup_plugin" {
+  description = "Whether to install Helm Whatup plugin."
+  type        = string
+  default     = false
+}
+
+variable "helm_whatup_plugin_url" {
+  description = "Helm Whatup plugin URL (official)."
+  type        = string
+  default     = "https://github.com/bacongobbler/helm-whatup"
 }
