@@ -20,6 +20,12 @@ provider "helm" {
   }
 }
 
+### locals ###
+
+locals {
+  namespace = "fluxcd"
+}
+
 ### modules ###
 
 # bootstraps flux and helm operator
@@ -30,7 +36,7 @@ module "fluxcd" {
   manage_github_ssh_pubkey = true
 
   # kubernetes objects
-  fluxcd_namespace   = "fluxcd"
+  fluxcd_namespace   = local.namespace
   fluxcd_secret_name = "fluxcd-secret"
 
   # helm binary and whatup plugin
@@ -47,4 +53,18 @@ module "fluxcd" {
   # fluxctl binary
   install_fluxctl = true
   fluxctl_version = "1.19.0"
+
+  # flux and fluxcloud
+  bootstrap_flux      = true
+  bootstrap_fluxcloud = false
+  flux_git_values = {
+    git_url          = "git@github.com:bcochofel/k8s-gitops-manifests.git"
+    git_readonly     = false
+    git_branch       = "master"
+    git_path         = "manifests"
+    git_user         = "Weave Flux"
+    git_email        = "support@weave.works"
+    git_pollInterval = "1m"
+    git_timeout      = "20s"
+  }
 }
