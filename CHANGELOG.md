@@ -7,11 +7,12 @@ project adheres to [Semantic Versioning](http://semver.org/).
 
 <a name="unreleased"></a>
 ## [Unreleased]
+ENHANCEMENTS:
+- istio module variables
+- fluxcd module DRY
+
 FEATURES:
 - istio module
-
-ENHANCEMENTS:
-- fluxcd module DRY
 
 
 <a name="v0.2.0"></a>
