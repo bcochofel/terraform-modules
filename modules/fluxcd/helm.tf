@@ -3,18 +3,19 @@ resource "null_resource" "helm" {
   count = var.install_helm ? 1 : 0
 
   triggers = {
-    helm_url      = "https://get.helm.sh/helm-v${var.helm_version}-linux-amd64.tar.gz"
-    helm_bin_path = "/usr/local/bin/helm"
+    helm_url      = local.helm_url
+    helm_bin_path = local.helm_bin
+    sudo_str      = local.sudo_str
   }
 
   # install helm binary
   provisioner "local-exec" {
     command = <<EOT
       curl -sO ${self.triggers.helm_url}
-      tar xzvf helm-v${var.helm_version}-linux-amd64.tar.gz
-      sudo cp linux-amd64/helm ${self.triggers.helm_bin_path}
-      sudo chmod a+x ${self.triggers.helm_bin_path}
-      rm -rf linux-amd64 helm-v${var.helm_version}-linux-amd64.tar.gz
+      tar xzvf ${local.helm_downloaded_file}
+      ${self.triggers.sudo_str}cp linux-amd64/helm ${self.triggers.helm_bin_path}
+      ${self.triggers.sudo_str}chmod a+x ${self.triggers.helm_bin_path}
+      rm -rf linux-amd64/ ${local.helm_downloaded_file}
     EOT
   }
 
@@ -24,7 +25,7 @@ resource "null_resource" "helm" {
     on_failure = continue
 
     command = <<EOT
-      sudo rm -f ${self.triggers.helm_bin_path}
+      ${self.triggers.sudo_str}rm -f ${self.triggers.helm_bin_path}
     EOT
   }
 }

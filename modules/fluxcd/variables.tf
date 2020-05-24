@@ -1,8 +1,26 @@
+### generic
+
+variable "bin_path" {
+  description = "Directory to copy binary files (should be in your PATH and end with '/')."
+  type        = string
+  default     = "~/bin/"
+}
+
+variable "sudo_string" {
+  description = "Use sudo to copy/delete files, eg: 'sudo' (should be passwordless)."
+  type        = string
+  default     = ""
+}
+
+### github
+
 variable "manage_github_ssh_pubkey" {
   description = "Whether to let the module manage Github SSH public key."
   type        = bool
   default     = true
 }
+
+### kubernetes
 
 variable "fluxcd_namespace" {
   description = "Name for the fluxcd k8s namespace."
@@ -15,6 +33,8 @@ variable "fluxcd_secret_name" {
   type        = string
   default     = "fluxcd-secret"
 }
+
+### helm operator
 
 variable "bootstrap_helm_operator" {
   description = "Whether to bootstrap Helm Operator on k8s."
@@ -50,6 +70,8 @@ variable "helm_operator_helm_versions" {
   default     = "v3"
 }
 
+### helm
+
 variable "install_helm" {
   description = "Whether to install Helm binary."
   type        = bool
@@ -61,6 +83,8 @@ variable "helm_version" {
   type        = string
   default     = "3.1.2"
 }
+
+### helm whatup plugin
 
 variable "install_helm_whatup_plugin" {
   description = "Whether to install Helm Whatup plugin."
@@ -74,6 +98,8 @@ variable "helm_whatup_plugin_url" {
   default     = "https://github.com/bacongobbler/helm-whatup"
 }
 
+### fluxctl
+
 variable "install_fluxctl" {
   description = "Whether to install fluxctl binary."
   type        = bool
@@ -85,6 +111,8 @@ variable "fluxctl_version" {
   type        = string
   default     = "1.19.0"
 }
+
+### flux/fluxcloud
 
 variable "bootstrap_flux" {
   description = "Whether to bootstrap flux on k8s."

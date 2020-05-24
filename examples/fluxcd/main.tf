@@ -33,6 +33,10 @@ locals {
 module "fluxcd" {
   source = "../../modules/fluxcd"
 
+  # generic
+  bin_path    = "~/bin/"
+  sudo_string = ""
+
   # github ssh key
   manage_github_ssh_pubkey = true
 
