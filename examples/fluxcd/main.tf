@@ -52,9 +52,8 @@ module "fluxcd" {
   helm_whatup_plugin_url = "https://github.com/fabmation-gmbh/helm-whatup"
 
   # helm operator
-  bootstrap_helm_operator          = true
-  helm_operator_helm_versions      = "v3"
-  helm_operator_prometheus_enabled = true
+  bootstrap_helm_operator   = true
+  helm_operator_values_file = "helm_operator_values.yaml"
 
   # fluxctl binary
   install_fluxctl = true

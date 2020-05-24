@@ -64,16 +64,10 @@ variable "helm_operator_spec_chart" {
   }
 }
 
-variable "helm_operator_helm_versions" {
-  description = "Helm Operator helm.versions parameter."
+variable "helm_operator_values_file" {
+  description = "Helm Operator values files."
   type        = string
-  default     = "v3"
-}
-
-variable "helm_operator_prometheus_enabled" {
-  description = "Enable Prometheus metrics."
-  type        = bool
-  default     = true
+  default     = ""
 }
 
 ### helm
