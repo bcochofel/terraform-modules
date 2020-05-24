@@ -70,6 +70,12 @@ variable "helm_operator_helm_versions" {
   default     = "v3"
 }
 
+variable "helm_operator_prometheus_enabled" {
+  description = "Enable Prometheus metrics."
+  type        = bool
+  default     = true
+}
+
 ### helm
 
 variable "install_helm" {
@@ -195,8 +201,9 @@ variable "flux_syncGarbage_values" {
 variable "flux_prometheus_enabled" {
   description = "Enable Prometheus metrics."
   type        = bool
-  default     = false
+  default     = true
 }
+
 variable "flux_manifestGeneration" {
   description = "If enabled, fluxd will look for .flux.yaml and run Kustomize or other manifest generators."
   type        = bool

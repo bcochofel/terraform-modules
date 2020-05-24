@@ -52,16 +52,18 @@ module "fluxcd" {
   helm_whatup_plugin_url = "https://github.com/fabmation-gmbh/helm-whatup"
 
   # helm operator
-  bootstrap_helm_operator     = true
-  helm_operator_helm_versions = "v3"
+  bootstrap_helm_operator          = true
+  helm_operator_helm_versions      = "v3"
+  helm_operator_prometheus_enabled = true
 
   # fluxctl binary
   install_fluxctl = true
   fluxctl_version = "1.19.0"
 
   # flux and fluxcloud
-  bootstrap_flux      = true
-  bootstrap_fluxcloud = true
+  bootstrap_flux          = true
+  bootstrap_fluxcloud     = true
+  flux_prometheus_enabled = true
   flux_git_values = {
     git_url          = "git@github.com:bcochofel/k8s-gitops-manifests.git"
     git_readonly     = false
@@ -71,6 +73,10 @@ module "fluxcd" {
     git_email        = "support@weave.works"
     git_pollInterval = "1m"
     git_timeout      = "20s"
+  }
+  flux_syncGarbage_values = {
+    syncGarbageCollection_enabled = true
+    syncGarbageCollection_dry     = false
   }
   slack_api_url = local.slack_api_url
 }

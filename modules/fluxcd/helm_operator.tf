@@ -47,4 +47,9 @@ resource "helm_release" "helm_operator" {
     name  = "helm.versions"
     value = var.helm_operator_helm_versions
   }
+
+  set {
+    name  = "prometheus.enabled"
+    value = var.helm_operator_prometheus_enabled
+  }
 }
