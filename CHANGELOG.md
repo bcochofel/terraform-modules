@@ -8,15 +8,17 @@ project adheres to [Semantic Versioning](http://semver.org/).
 <a name="unreleased"></a>
 ## [Unreleased]
 
-
-
 <a name="v0.3.0"></a>
 ## [v0.3.0] - 2020-05-24
 FEATURES:
 - istio module
 
 ENHANCEMENTS:
+- istio module variables
 - fluxcd module DRY
+
+FEATURES:
+- istio module
 
 
 <a name="v0.2.0"></a>
