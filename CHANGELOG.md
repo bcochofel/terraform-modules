@@ -7,6 +7,11 @@ project adheres to [Semantic Versioning](http://semver.org/).
 
 <a name="unreleased"></a>
 ## [Unreleased]
+
+
+
+<a name="v0.3.0"></a>
+## [v0.3.0] - 2020-05-24
 FEATURES:
 - istio module
 
@@ -30,5 +35,6 @@ FEATURES:
 - initial commit
 
 
-[Unreleased]: https://github.com/terraform-aws-modules/terraform-aws-eks/compare/v0.2.0...HEAD
+[Unreleased]: https://github.com/terraform-aws-modules/terraform-aws-eks/compare/v0.3.0...HEAD
+[v0.3.0]: https://github.com/terraform-aws-modules/terraform-aws-eks/compare/v0.2.0...v0.3.0
 [v0.2.0]: https://github.com/terraform-aws-modules/terraform-aws-eks/compare/v0.1.0...v0.2.0
