@@ -7,6 +7,9 @@ project adheres to [Semantic Versioning](http://semver.org/).
 
 <a name="unreleased"></a>
 ## [Unreleased]
+FEATURES:
+- fluxcd module, helm operator chart values file
+
 ENHANCEMENTS:
 - fluxcd module variables
 - istio module variables

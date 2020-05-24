@@ -1,0 +1,51 @@
+---
+git:
+  # URL of git repo with Kubernetes manifests
+  url: "git@github.com:bcochofel/k8s-gitops-manifests.git"
+  # Branch of git repo to use for Kubernetes manifests
+  branch: "master"
+  # Path within git repo to locate Kubernetes manifests (relative path)
+  path: "manifests"
+  # Period at which to poll git repo for new commits
+  pollInterval: "1m"
+
+prometheus:
+  enabled: true
+  serviceMonitor:
+    # Enables ServiceMonitor creation for the Prometheus Operator
+    create: false
+    interval:
+    scrapeTimeout:
+    namespace:
+    additionalLabels: {}
+
+syncGarbageCollection:
+  enabled: true
+  dry: false
+
+# Enables manifest generation
+manifestGeneration: false
+
+# To use fluxcloud uncomment until the EOF
+# additionalArgs:
+#   - --connect=ws://127.0.0.1:3032
+
+# extraContainers:
+#   - name: fluxcloud
+#     image: justinbarrick/fluxcloud:v0.3.9
+#     imagePullPolicy: IfNotPresent
+#     ports:
+#       - containerPort: 3032
+#     env:
+#       - name: SLACK_URL
+#         value: "${slack_url}"
+#       - name: SLACK_USERNAME
+#         value: "${slack_username}"
+#       - name: SLACK_CHANNEL
+#         value: "${slack_channel}"
+#       - name: SLACK_ICON_EMOJI
+#         value: "${slack_emoji}"
+#       - name: GITHUB_URL
+#         value: "${github_url}"
+#       - name: LISTEN_ADDRESS
+#         value: ":3032"

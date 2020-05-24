@@ -20,13 +20,6 @@ provider "helm" {
   }
 }
 
-### locals ###
-
-locals {
-  namespace     = "fluxcd"
-  slack_api_url = var.slack_api_url
-}
-
 ### modules ###
 
 # bootstraps flux and helm operator
@@ -41,7 +34,7 @@ module "fluxcd" {
   manage_github_ssh_pubkey = true
 
   # kubernetes objects
-  fluxcd_namespace   = local.namespace
+  fluxcd_namespace   = "fluxcd"
   fluxcd_secret_name = "fluxcd-secret"
 
   # helm binary and whatup plugin
@@ -52,31 +45,14 @@ module "fluxcd" {
   helm_whatup_plugin_url = "https://github.com/fabmation-gmbh/helm-whatup"
 
   # helm operator
-  bootstrap_helm_operator          = true
-  helm_operator_helm_versions      = "v3"
-  helm_operator_prometheus_enabled = true
+  bootstrap_helm_operator   = true
+  helm_operator_values_file = "helm_operator_values.yaml"
 
   # fluxctl binary
   install_fluxctl = true
   fluxctl_version = "1.19.0"
 
   # flux and fluxcloud
-  bootstrap_flux          = true
-  bootstrap_fluxcloud     = true
-  flux_prometheus_enabled = true
-  flux_git_values = {
-    git_url          = "git@github.com:bcochofel/k8s-gitops-manifests.git"
-    git_readonly     = false
-    git_branch       = "master"
-    git_path         = "manifests"
-    git_user         = "Weave Flux"
-    git_email        = "support@weave.works"
-    git_pollInterval = "1m"
-    git_timeout      = "20s"
-  }
-  flux_syncGarbage_values = {
-    syncGarbageCollection_enabled = true
-    syncGarbageCollection_dry     = false
-  }
-  slack_api_url = local.slack_api_url
+  bootstrap_flux   = true
+  flux_values_file = "flux_values.yaml"
 }
