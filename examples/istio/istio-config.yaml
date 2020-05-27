@@ -20,3 +20,6 @@ spec:
     pilot:
       enabled: true
       traceSampling: 1.0
+    global:
+      proxy:
+        accessLogFile: "/dev/stdout"
