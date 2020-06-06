@@ -19,7 +19,7 @@ spec:
       tag: v2.18.1
     pilot:
       enabled: true
-      traceSampling: 100.0
+      traceSampling: 1.0
     global:
       proxy:
         accessLogFile: "/dev/stdout"
