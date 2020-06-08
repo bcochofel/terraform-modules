@@ -24,7 +24,7 @@ provider "helm" {
 
 # bootstraps flux and helm operator
 module "fluxcd" {
-  source = "../../modules/fluxcd"
+  source = "../../../modules/fluxcd"
 
   # generic
   bin_path    = "~/bin/"

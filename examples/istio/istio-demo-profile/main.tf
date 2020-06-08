@@ -8,15 +8,15 @@ provider "kubernetes" {
 
 # Installs istio
 module "istio" {
-  source = "../../modules/istio"
+  source = "../../../modules/istio"
 
   kubectl_context = var.kubectl_context
 
   istio_version = "1.5.2"
-  profile       = "default"
+  profile       = "demo"
 
   kiali_username   = "admin"
   kiali_passphrase = "password"
 
-  values_file = "./istio-config.yaml"
+  values_file = ""
 }

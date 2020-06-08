@@ -1,0 +1,16 @@
+---
+# values for helm operator
+
+# Helm versions supported by this operator instance
+helm:
+  versions: "v3"
+
+prometheus:
+  enabled: true
+  serviceMonitor:
+    # Enables ServiceMonitor creation for the Prometheus Operator
+    create: false
+    interval:
+    scrapeTimeout:
+    namespace:
+    additionalLabels: {}
