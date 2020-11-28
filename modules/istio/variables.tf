@@ -22,7 +22,7 @@ variable "kubectl_context" {
 variable "istio_version" {
   description = "Istio version."
   type        = string
-  default     = "1.5.2"
+  default     = "1.5.10"
 }
 
 variable "profile" {

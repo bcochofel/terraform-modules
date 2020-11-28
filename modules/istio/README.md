@@ -18,7 +18,7 @@
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | bin\_path | Directory to copy binary files (should be in your PATH and end with '/'). | `string` | `"~/bin/"` | no |
-| istio\_version | Istio version. | `string` | `"1.5.2"` | no |
+| istio\_version | Istio version. | `string` | `"1.5.10"` | no |
 | kiali\_passphrase | Kiali passphrase for authentication | `string` | `"password"` | no |
 | kiali\_username | Kiali username for authentication | `string` | `"admin"` | no |
 | kubectl\_context | kubectl config context to apply Istio (kubectl should be in your PATH). | `string` | n/a | yes |
