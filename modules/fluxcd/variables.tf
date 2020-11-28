@@ -45,7 +45,7 @@ variable "bootstrap_helm_operator" {
 variable "helm_operator_crd_url" {
   description = "HelmRelease Custom Resource Definition URL"
   type        = string
-  default     = "https://raw.githubusercontent.com/fluxcd/helm-operator/1.1.0/deploy/crds.yaml"
+  default     = "https://raw.githubusercontent.com/fluxcd/helm-operator/1.2.0/deploy/crds.yaml"
 }
 
 variable "helm_operator_spec_chart" {
@@ -60,7 +60,7 @@ variable "helm_operator_spec_chart" {
     release_name  = "helm-operator"
     repository    = "https://charts.fluxcd.io"
     chart_name    = "helm-operator"
-    chart_version = "1.0.2"
+    chart_version = "1.2.0"
   }
 }
 
@@ -81,7 +81,7 @@ variable "install_helm" {
 variable "helm_version" {
   description = "Helm binary version (>= v3.x)."
   type        = string
-  default     = "3.1.2"
+  default     = "3.4.1"
 }
 
 ### helm whatup plugin
@@ -109,7 +109,7 @@ variable "install_fluxctl" {
 variable "fluxctl_version" {
   description = "Fluxctl binary version."
   type        = string
-  default     = "1.19.0"
+  default     = "1.21.0"
 }
 
 ### flux/fluxcloud
@@ -132,7 +132,7 @@ variable "flux_spec_chart" {
     release_name  = "flux"
     repository    = "https://charts.fluxcd.io"
     chart_name    = "flux"
-    chart_version = "1.3.0"
+    chart_version = "1.6.0"
   }
 }
 
