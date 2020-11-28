@@ -2,8 +2,7 @@
 
 # github provider
 provider "github" {
-  token      = var.github_token
-  individual = true
+  token = var.github_token
 }
 
 # kubernetes provider
@@ -39,7 +38,7 @@ module "fluxcd" {
 
   # helm binary and whatup plugin
   install_helm               = true
-  helm_version               = "3.1.2"
+  helm_version               = "3.4.1"
   install_helm_whatup_plugin = true
   # official helm whatup doesn't support helm v3 yet...
   helm_whatup_plugin_url = "https://github.com/fabmation-gmbh/helm-whatup"
@@ -50,7 +49,7 @@ module "fluxcd" {
 
   # fluxctl binary
   install_fluxctl = true
-  fluxctl_version = "1.19.0"
+  fluxctl_version = "1.21.0"
 
   # flux and fluxcloud
   bootstrap_flux   = true
