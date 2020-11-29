@@ -5,7 +5,7 @@ git:
   # Branch of git repo to use for Kubernetes manifests
   branch: "main"
   # Path within git repo to locate Kubernetes manifests (relative path)
-  path: "scenarios/istio-demo-profile"
+  path: "scenarios/istio-demo"
   # Period at which to poll git repo for new commits
   pollInterval: "1m"
 
