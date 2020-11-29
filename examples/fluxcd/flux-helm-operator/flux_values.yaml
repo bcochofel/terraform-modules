@@ -1,11 +1,11 @@
 ---
 git:
   # URL of git repo with Kubernetes manifests
-  url: "git@github.com:bcochofel/k8s-gitops-manifests.git"
+  url: "git@github.com:bcochofel/k8s-gitops-istio-demo.git"
   # Branch of git repo to use for Kubernetes manifests
-  branch: "master"
+  branch: "main"
   # Path within git repo to locate Kubernetes manifests (relative path)
-  path: "manifests"
+  path: "scenarios/istio-demo-profile"
   # Period at which to poll git repo for new commits
   pollInterval: "1m"
 
@@ -24,7 +24,7 @@ syncGarbageCollection:
   dry: false
 
 # Enables manifest generation
-manifestGeneration: false
+manifestGeneration: true
 
 # To use fluxcloud uncomment until the EOF and edit to your values
 # additionalArgs:
