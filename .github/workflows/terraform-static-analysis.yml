@@ -46,7 +46,5 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Check Tag Version
-        env:
-          TAG_NAME: ${{ steps.tag_version.outputs.new_tag }}
         run: |
-          echo ${TAG_NAME}
+          echo "tag name ${{ steps.tag_version.outputs.new_tag }}"
