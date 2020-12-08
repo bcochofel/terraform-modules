@@ -65,6 +65,6 @@ resource "helm_release" "helm_operator_w_values" {
   }
 
   values = [
-    "${file(var.helm_operator_values_file)}"
+    file(var.helm_operator_values_file)
   ]
 }

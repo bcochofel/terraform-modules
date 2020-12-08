@@ -34,6 +34,6 @@ resource "helm_release" "flux_w_values" {
   }
 
   values = [
-    "${file(var.flux_values_file)}"
+    file(var.flux_values_file)
   ]
 }
