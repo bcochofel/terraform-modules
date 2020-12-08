@@ -1,5 +1,5 @@
 name: Lint
-on: [push, pull_request]
+on: [pull_request]
 
 jobs:
   fmt:
@@ -34,17 +34,3 @@ jobs:
       - uses: actions/checkout@master
       - name: TFLint
         uses: docker://wata727/tflint
-
-  build:
-    name: Build
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - name: Bump version and push tag
-        id: tag_version
-        uses: mathieudutour/github-tag-action@v5.1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Check Tag Version
-        run: |
-          echo "tag name ${{ steps.tag_version.outputs.new_tag }}"
