@@ -7,17 +7,16 @@ on:
 
 jobs:
   build:
-    name: Build
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@master
       - name: Bump version and push tag
         id: tag_version
-        uses: mathieudutour/github-tag-action@v5.1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+        uses: Instrument/github-tag-action@v1.0
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: master
+          BUMP: patch
       - name: Check Tag Version
         run: |
-          echo "previous tag: ${{ steps.tag_version.outputs.previous_tag }}"
-          echo "new version: ${{ steps.tag_version.outputs.new_version }}"
           echo "new tag: ${{ steps.tag_version.outputs.new_tag }}"
