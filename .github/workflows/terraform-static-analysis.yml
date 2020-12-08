@@ -47,4 +47,6 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Check Tag Version
         run: |
-          echo "tag name ${{ steps.tag_version.outputs.new_tag }}"
+          echo "previous tag: ${{ steps.tag_version.outputs.previous_tag }}"
+          echo "new version: ${{ steps.tag_version.outputs.new_version }}"
+          echo "new tag: ${{ steps.tag_version.outputs.new_tag }}"
