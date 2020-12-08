@@ -13,8 +13,7 @@ the `examples/` folder that you can adapt to your needs.
 # Requirements
 
 * [`pre-commit`](https://pre-commit.com/#install)
-* [`terraform-docs`](https://github.com/segmentio/terraform-docs) required for `terraform_docs` hooks. `GNU awk` is required if using `terraform-docs` older than 0.8.0 with Terraform 0.12.
-* [`TFLint`](https://github.com/terraform-linters/tflint) required for `terraform_tflint` hook.
+* [`TFLint`](https://github.com/terraform-linters/tflint) required for `tflint` hook.
 
 You can also use [pre-commit](https://pre-commit.com/#install). After installing
 `pre-commit` just execute:
