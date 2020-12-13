@@ -2,25 +2,19 @@ provider "azurerm" {
   features {}
 }
 
-resource "random_string" "salt" {
-  length  = 4
-  special = false
-  upper   = false
-}
-
 module "networking" {
   source = "../../modules/azurerm_network"
 
-  rg_name  = "base-net-rg-${random_string.salt.result}"
+  rg_name  = "base-net-rg"
   location = "North Europe"
 
   custom_tags = {
     Environment = "demo"
   }
 
-  ddos_protection_plan_name = "ddospplan-${random_string.salt.result}"
+  ddos_protection_plan_name = "ddospplan"
 
-  vnet_name     = "base-vnet-${random_string.salt.result}"
+  vnet_name     = "base-vnet"
   address_space = "10.0.0.0/16"
 
   subnets = {
