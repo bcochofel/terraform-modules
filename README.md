@@ -10,7 +10,7 @@
 This repository has several modules on the `modules/` folder and some samples on
 the `examples/` folder that you can adapt to your needs.
 
-There's also `test` folder that uses [Terratest]{https://github.com/gruntwork-io/terratest}.
+There's also `test` folder that uses [Terratest](https://github.com/gruntwork-io/terratest).
 
 # Requirements
 
