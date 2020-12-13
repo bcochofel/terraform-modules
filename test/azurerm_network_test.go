@@ -3,24 +3,40 @@ package test
 import (
 	"testing"
 
+	"github.com/gruntwork-io/terratest/modules/azure"
+
 	"github.com/gruntwork-io/terratest/modules/terraform"
+	"github.com/stretchr/testify/assert"
 )
 
 func TestAzureNetworkExample(t *testing.T) {
 	t.Parallel()
 
 	// subscriptionID is overridden by the environment variable "ARM_SUBSCRIPTION_ID"
-	//subscriptionID := ""
+	subscriptionID := ""
 
-	// website::tag::1:: Configure Terraform setting up a path to Terraform code.
+	// Configure Terraform setting up a path to Terraform code.
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
 		TerraformDir: "../examples/azurerm_network",
 	}
 
-	// website::tag::4:: At the end of the test, run `terraform destroy` to clean up any resources that were created
+	// At the end of the test, run `terraform destroy` to clean up any resources that were created
 	defer terraform.Destroy(t, terraformOptions)
 
-	// website::tag::2:: Run `terraform init` and `terraform apply`. Fail the test if there are any errors.
+	// Run `terraform init` and `terraform apply`. Fail the test if there are any errors.
 	terraform.InitAndApply(t, terraformOptions)
+
+	// Run `terraform output` to get the values of output variables
+	expectedRgName := terraform.Output(t, terraformOptions, "resource_group_name")
+	expectedVNetName := terraform.Output(t, terraformOptions, "virtual_network_name")
+
+	// Test for resource presence
+	t.Run("Exists", func(t *testing.T) {
+		// Check the Resource Group exists
+		assert.True(t, azure.ResourceGroupExists(t, expectedRgName, subscriptionID))
+
+		// Check the Virtual Network exists
+		assert.True(t, azure.VirtualNetworkExists(t, expectedVNetName, expectedRgName, subscriptionID))
+	})
 }
