@@ -6,7 +6,7 @@ module "networking" {
   source = "../../modules/azurerm_network"
 
   rg_name  = "base-net-rg"
-  location = "North Europe"
+  location = "northeurope"
 
   custom_tags = {
     Environment = "demo"

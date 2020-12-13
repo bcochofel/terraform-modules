@@ -7,7 +7,7 @@ variable "rg_name" {
 variable "location" {
   description = "Azure Location to create the resources."
   type        = string
-  default     = "North Europe"
+  default     = "northeurope"
 }
 
 variable "tags" {
