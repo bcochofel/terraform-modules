@@ -15,6 +15,10 @@ func TestAzureNetworkExample(t *testing.T) {
 	// subscriptionID is overridden by the environment variable "ARM_SUBSCRIPTION_ID"
 	subscriptionID := ""
 
+	// terraform values to test
+	rgName := "base-net-rg"
+	vNetName := "base-vnet"
+
 	// Configure Terraform setting up a path to Terraform code.
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
@@ -31,6 +35,15 @@ func TestAzureNetworkExample(t *testing.T) {
 	expectedRgName := terraform.Output(t, terraformOptions, "resource_group_name")
 	expectedVNetName := terraform.Output(t, terraformOptions, "virtual_network_name")
 
+	// Test for resource name
+	t.Run("CheckNames", func(t *testing.T) {
+		// Check the Resource Group name
+		assert.Equal(t, rgName, expectedRgName)
+
+		// Check the Virtual Network name
+		assert.Equal(t, vNetName, expectedVNetName)
+	})
+
 	// Test for resource presence
 	t.Run("Exists", func(t *testing.T) {
 		// Check the Resource Group exists
@@ -39,4 +52,5 @@ func TestAzureNetworkExample(t *testing.T) {
 		// Check the Virtual Network exists
 		assert.True(t, azure.VirtualNetworkExists(t, expectedVNetName, expectedRgName, subscriptionID))
 	})
+
 }
