@@ -23,3 +23,7 @@ You can also use [pre-commit](https://pre-commit.com/#install). After installing
 ```ShellSession
 pre-commit install
 ```
+
+# References
+
+* [Terraform Versions Constraints](https://www.terraform.io/docs/configuration/version-constraints.html)
