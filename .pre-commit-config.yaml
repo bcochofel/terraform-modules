@@ -16,5 +16,5 @@ repos:
       - id: terraform-validate
         exclude: ^modules/
       - id: tflint
-      - id: gofmt
-      - id: golint
+#      - id: gofmt
+#      - id: golint

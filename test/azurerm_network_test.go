@@ -16,8 +16,8 @@ func TestAzureNetworkExample(t *testing.T) {
 	subscriptionID := ""
 
 	// terraform values to test
-	rgName := "base-net-rg"
-	vNetName := "base-vnet"
+	rgName := "rg-base-example-001"
+	vNetName := "vnet-base-example-001"
 
 	// Configure Terraform setting up a path to Terraform code.
 	terraformOptions := &terraform.Options{
