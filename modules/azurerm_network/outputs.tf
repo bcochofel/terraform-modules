@@ -22,13 +22,3 @@ output "vnet_address_space" {
   description = "The address space of the newly created vNet"
   value       = azurerm_virtual_network.vnet.address_space
 }
-
-output "vnet_subnets" {
-  description = "The ids of subnets created inside the new vNet"
-  value       = azurerm_subnet.subnet
-}
-
-output "subnets_nsg" {
-  description = "The ids of the network security groups"
-  value       = azurerm_network_security_group.nsg
-}

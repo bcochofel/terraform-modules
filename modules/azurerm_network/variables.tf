@@ -50,32 +50,3 @@ variable "dns_servers" {
   type        = list(string)
   default     = []
 }
-
-variable "subnets" {
-  description = <<EOD
-Subnets configuration
-
-```hcl
-subnets = {
-  subnet1 = {
-    address_prefixes = "10.0.1.0/24",
-    nsg              = "nsgsubnet1"
-  },
-  subnet2 = {
-    address_prefixes = "10.0.2.0/24",
-    nsg              = "nsgsubnet2"
-  }
-}
-```
-EOD
-  type = map(object({
-    address_prefixes = string
-    nsg              = string
-  }))
-  default = {
-    subnet1 = {
-      address_prefixes = "10.0.1.0/24",
-      nsg              = "nsgsubnet1"
-    }
-  }
-}
