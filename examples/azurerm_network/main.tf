@@ -9,7 +9,7 @@ module "networking" {
   location = "northeurope"
 
   custom_tags = {
-    Environment = "demo"
+    Environment = "example"
   }
 
   ddos_protection_plan_name = "ddospp-base-example-001"
