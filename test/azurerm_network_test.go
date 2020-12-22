@@ -32,8 +32,8 @@ func TestAzureNetworkExample(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// Run `terraform output` to get the values of output variables
-	expectedRgName := terraform.Output(t, terraformOptions, "resource_group_name")
-	expectedVNetName := terraform.Output(t, terraformOptions, "virtual_network_name")
+	expectedRgName := terraform.Output(t, terraformOptions, "rg_name")
+	expectedVNetName := terraform.Output(t, terraformOptions, "vnet_name")
 
 	// Test for resource name
 	t.Run("CheckNames", func(t *testing.T) {
