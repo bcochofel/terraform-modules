@@ -47,6 +47,7 @@ The following resources are deployed by this module:
 | rg\_name | Name of the Resource Group to create. | `string` | n/a | yes |
 | snet\_addr\_prefixes | The address prefixes to use for the subnet. | `string` | n/a | yes |
 | snet\_name | Name of the Subnet. | `string` | n/a | yes |
+| ssh\_pubkey | SSH Public Key. | `string` | n/a | yes |
 | tags | A mapping of tags which should be assigned to the Resource Group. | `map(string)` | <pre>{<br>  "ManagedBy": "Terraform"<br>}</pre> | no |
 | vm\_admin\_username | VM Administrator username. | `string` | `"adminuser"` | no |
 | vm\_managed\_disk\_type | Specifies the type of Managed Disk which should be created. | `string` | `"Standard_LRS"` | no |

@@ -1,4 +1,4 @@
-output "resource_group_name" {
+output "rg_name" {
   value = module.networking.resource_group_name
 }
 
@@ -6,6 +6,6 @@ output "location" {
   value = module.networking.location
 }
 
-output "virtual_network_name" {
+output "vnet_name" {
   value = module.networking.vnet_name
 }

@@ -94,3 +94,8 @@ variable "vm_admin_username" {
   type        = string
   default     = "adminuser"
 }
+
+variable "ssh_pubkey" {
+  description = "SSH Public Key."
+  type        = string
+}
