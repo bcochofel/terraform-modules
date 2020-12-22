@@ -28,6 +28,14 @@ terraform {
       source  = "hashicorp/azurerm"
       version = ">= 2.41.0"
     }
+    random = {
+      source  = "hashicorp/random"
+      version = ">= 3.0.0"
+    }
+    tls = {
+      source  = "hashicorp/tls"
+      version = ">= 3.0.0"
+    }
   }
 }
 
@@ -117,50 +125,36 @@ resource "azurerm_storage_account" "st" {
   tags                     = merge(var.tags, var.custom_tags)
 }
 
-# create virtual machine
-resource "azurerm_virtual_machine" "vm" {
-  name                  = var.vm_name
-  location              = azurerm_resource_group.rg.location
-  resource_group_name   = azurerm_resource_group.rg.name
-  network_interface_ids = [azurerm_network_interface.nic.id]
-  vm_size               = var.vm_size
-  tags                  = merge(var.tags, var.custom_tags)
+# create linux virtual machine
+resource "azurerm_linux_virtual_machine" "vm" {
+  admin_username                  = var.admin_ssh_key.username
+  location                        = azurerm_resource_group.rg.location
+  name                            = var.vm_name
+  network_interface_ids           = [azurerm_network_interface.nic.id]
+  resource_group_name             = azurerm_resource_group.rg.name
+  size                            = var.vm_size
+  disable_password_authentication = true
 
-  # Uncomment this line to delete the OS disk automatically when deleting the VM
-  delete_os_disk_on_termination = true
-
-  # Uncomment this line to delete the data disks automatically when deleting the VM
-  delete_data_disks_on_termination = true
-
-  storage_image_reference {
-    publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "18.04-LTS"
-    version   = "latest"
+  os_disk {
+    caching              = var.os_disk.caching
+    storage_account_type = var.os_disk.storage_account_type
   }
 
-  storage_os_disk {
-    name              = "${var.vm_name}disk"
-    caching           = "ReadWrite"
-    create_option     = "FromImage"
-    managed_disk_type = var.vm_managed_disk_type
-  }
-
-  os_profile {
-    computer_name  = var.vm_name
-    admin_username = var.vm_admin_username
-  }
-
-  os_profile_linux_config {
-    disable_password_authentication = true
-    ssh_keys {
-      key_data = var.ssh_pubkey
-      path     = "/home/${var.vm_admin_username}/.ssh/authorized_keys"
-    }
+  admin_ssh_key {
+    username   = var.admin_ssh_key.username
+    public_key = var.admin_ssh_key.public_key
   }
 
   boot_diagnostics {
-    enabled     = true
-    storage_uri = azurerm_storage_account.st.primary_blob_endpoint
+    storage_account_uri = azurerm_storage_account.st.primary_blob_endpoint
   }
+
+  source_image_reference {
+    publisher = var.vm_image.publisher
+    offer     = var.vm_image.offer
+    sku       = var.vm_image.sku
+    version   = var.vm_image.version
+  }
+
+  tags = merge(var.tags, var.custom_tags)
 }

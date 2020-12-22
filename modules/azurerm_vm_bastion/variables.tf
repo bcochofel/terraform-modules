@@ -88,19 +88,31 @@ variable "vm_size" {
   default     = "Standard_DS1_v2"
 }
 
-variable "vm_managed_disk_type" {
-  description = "Specifies the type of Managed Disk which should be created."
-  type        = string
-  default     = "Standard_LRS"
+variable "os_disk" {
+  description = "Type of disk for the OS."
+  type        = map(string)
+  default = {
+    storage_account_type = "Standard_LRS"
+    caching              = "ReadWrite"
+  }
 }
 
-variable "vm_admin_username" {
-  description = "VM Administrator username."
-  type        = string
-  default     = "adminuser"
+variable "admin_ssh_key" {
+  description = "Administrator credentials."
+  type        = map(string)
+  default = {
+    username   = "adminuser"
+    public_key = ""
+  }
 }
 
-variable "ssh_pubkey" {
-  description = "SSH Public Key."
-  type        = string
+variable "vm_image" {
+  description = "Source Image for the Linux."
+  type        = map(string)
+  default = {
+    publisher = "Canonical"
+    offer     = "UbuntuServer"
+    sku       = "18.04-LTS"
+    version   = "latest"
+  }
 }
