@@ -2,6 +2,12 @@ provider "azurerm" {
   features {}
 }
 
+# Create (and display) an SSH key
+resource "tls_private_key" "example_ssh" {
+  algorithm = "RSA"
+  rsa_bits  = 4096
+}
+
 module "bastion" {
   source = "../../modules/azurerm_vm_bastion"
 
@@ -19,4 +25,7 @@ module "bastion" {
   snet_name          = "snet-bastion-example-001"
   snet_addr_prefixes = "10.0.1.0/24"
   vm_name            = "vm-bastion-example-001"
+
+  vm_admin_username = "adminuser"
+  ssh_pubkey        = tls_private_key.example_ssh.public_key_openssh
 }
