@@ -1,5 +1,5 @@
 output "rg_name" {
-  value = module.networking.resource_group_name
+  value = module.networking.rg_name
 }
 
 output "location" {
