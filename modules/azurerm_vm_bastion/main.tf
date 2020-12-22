@@ -41,7 +41,7 @@ resource "azurerm_resource_group" "rg" {
 # subnet
 resource "azurerm_subnet" "snet" {
   name                 = var.snet_name
-  resource_group_name  = azurerm_resource_group.rg.name
+  resource_group_name  = var.vnet_rg
   virtual_network_name = var.vnet_name
   address_prefixes     = [var.snet_addr_prefixes]
 }

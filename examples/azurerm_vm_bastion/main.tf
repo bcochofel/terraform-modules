@@ -19,6 +19,7 @@ module "bastion" {
   }
 
   vnet_name          = "vnet-base-example-001"
+  vnet_rg            = "rg-base-example-001"
   nic_name           = "nic-bastion-example-001"
   nsg_name           = "nsg-bastion-example-001"
   pip_name           = "pip-bastion-example-001"

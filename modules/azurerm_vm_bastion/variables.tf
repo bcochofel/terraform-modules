@@ -29,6 +29,11 @@ variable "vnet_name" {
   type        = string
 }
 
+variable "vnet_rg" {
+  description = "vNet Resource Group name."
+  type        = string
+}
+
 variable "snet_name" {
   description = "Name of the Subnet."
   type        = string
