@@ -2,6 +2,12 @@
 ## [Unreleased]
 
 
+<a name="1.0.1"></a>
+## [1.0.1] - 2021-07-12
+
+<a name="1.0.0"></a>
+## [1.0.0] - 2021-01-23
+
 <a name="0.1.0"></a>
 ## 0.1.0 - 2021-01-23
 ### Docs
@@ -23,6 +29,7 @@
 - fluxcd module DRY
 
 ### Pull Requests
+- Merge pull request [#49](https://github.com/bcochofel/terraform-modules/issues/49) from bcochofel/first_release
 - Merge pull request [#48](https://github.com/bcochofel/terraform-modules/issues/48) from bcochofel/rm-azurerm-modules
 - Merge pull request [#47](https://github.com/bcochofel/terraform-modules/issues/47) from bcochofel/bastion-refactor
 - Merge pull request [#46](https://github.com/bcochofel/terraform-modules/issues/46) from bcochofel/vnet-peering
@@ -71,4 +78,6 @@
 - Merge pull request [#1](https://github.com/bcochofel/terraform-modules/issues/1) from bcochofel/initial-commit
 
 
-[Unreleased]: https://github.com/bcochofel/terraform-modules/compare/0.1.0...HEAD
+[Unreleased]: https://github.com/bcochofel/terraform-modules/compare/1.0.1...HEAD
+[1.0.1]: https://github.com/bcochofel/terraform-modules/compare/1.0.0...1.0.1
+[1.0.0]: https://github.com/bcochofel/terraform-modules/compare/0.1.0...1.0.0
